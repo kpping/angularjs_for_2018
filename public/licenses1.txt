@@ -1,4 +1,4 @@
-Bootstrap Reboot v4.0.0 (https://getbootstrap.com)
+Bootstrap v4.0.0 (https://getbootstrap.com)
 MIT
 The MIT License (MIT)
 

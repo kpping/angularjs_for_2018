@@ -3,7 +3,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
-    getPath, APP_DIR, DIST_DIR, PUBLIC_DIR, NODE_ENV,
+    getPath,
+    getHtmlMinifierOpt,
+    minHtmlBuffer,
+    APP_DIR,
+    DIST_DIR,
+    PUBLIC_DIR,
+    NODE_ENV,
 } = require('./utils');
 
 if (NODE_ENV !== 'development') {
@@ -73,9 +79,11 @@ module.exports = {
         new CopyWebpackPlugin([{
             context: APP_DIR,
             from: 'components/**/*.html',
+            transform: minHtmlBuffer,
         }, {
             context: APP_DIR,
             from: 'pages/**/*.html',
+            transform: minHtmlBuffer,
         }, {
             context: PUBLIC_DIR,
             from: '.',
@@ -84,6 +92,7 @@ module.exports = {
         // create index.html
         new HtmlWebpackPlugin({
             template: getPath('index.html', APP_DIR),
+            minify: getHtmlMinifierOpt(),
         }),
     ],
 };

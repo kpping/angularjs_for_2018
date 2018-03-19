@@ -1,0 +1,12 @@
+:local .container {
+    width           : 320px;
+    height          : 100px;
+    margin          : 0 auto;
+    background-color: white;
+    border-radius   : 3px;
+
+    h1 {
+        text-align: center;
+    }
+}
+// :local .container

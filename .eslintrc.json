@@ -1,0 +1,22 @@
+{
+    "extends": "airbnb-base",
+    "env": {
+        "browser": true,
+        "node": true,
+        "jquery": true
+    },
+    "globals": {
+        "angular": true,
+        "ENV": true
+    },
+    "rules": {
+        "indent": ["error", 4, {
+            "SwitchCase": 1,
+            "flatTernaryExpressions": true
+        }],
+        "global-require": "off",
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
+        "no-param-reassign": "off"
+    }
+}

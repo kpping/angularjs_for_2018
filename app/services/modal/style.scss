@@ -1,0 +1,5 @@
+:local .crop {
+    overflow: hidden;
+    position: fixed;
+    width   : 100%; // required becase fixed position
+}

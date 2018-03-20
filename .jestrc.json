@@ -1,0 +1,13 @@
+{
+    "roots": ["./app"],
+    "setupTestFrameworkScriptFile": "./jest.init.js",
+    "moduleFileExtensions": ["js"],
+    "moduleNameMapper": {
+        "\\.(scss)$": "identity-obj-proxy"
+    },
+    "globals": {
+        "ENV": {
+            "name": "test"
+        }
+    }
+}

@@ -9,7 +9,7 @@ export class FooCtrl {
     constructor(...args) {
         args.forEach((di, index) => { this[DI[index]] = di; });
 
-        greetOnInit(this.$log);
+        greetOnInit(this.$log.info);
     }
 
     showHelloPopup() {

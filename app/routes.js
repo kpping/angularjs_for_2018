@@ -1,3 +1,8 @@
+// HACK: work around for jest
+if (ENV.name === 'test') {
+    require.ensure = angular.noop;
+}
+
 export const routes = [{
     name: 'foo',
     url: '/foo',

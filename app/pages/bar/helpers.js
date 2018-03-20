@@ -1,3 +1,3 @@
-export function greetOnInit($log) {
-    $log.info('bar');
+export function greetOnInit(logger) {
+    logger('bar');
 }

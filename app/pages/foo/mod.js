@@ -1,7 +1,7 @@
 import camel from 'camel-case';
 import { FooDrt } from './drt';
 import { moduleName as LoremModuleName } from '../../components/lorem/mod';
-import { moduleName as HelloPopupModuleName } from '../../components/hello_popup/mod';
+import { moduleName as HelloPopupModuleName } from '../../components/hello-popup/mod';
 
 export const moduleName = 'page.foo';
 

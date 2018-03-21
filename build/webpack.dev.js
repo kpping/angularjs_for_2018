@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
     getPath,
     getHtmlMinifierOpt,
-    minHtmlBuffer,
     APP_DIR,
     DIST_DIR,
     PUBLIC_DIR,
@@ -37,6 +36,12 @@ module.exports = {
             use: {
                 // transform es6 to es5
                 loader: 'babel-loader',
+            },
+        }, {
+            test: /\.html$/,
+            use: {
+                loader: 'html-loader',
+                options: getHtmlMinifierOpt(),
             },
         }, {
             test: /\.scss$/,
@@ -74,14 +79,6 @@ module.exports = {
         }),
         // copy files
         new CopyWebpackPlugin([{
-            context: APP_DIR,
-            from: 'components/**/*.html',
-            transform: minHtmlBuffer,
-        }, {
-            context: APP_DIR,
-            from: 'pages/**/*.html',
-            transform: minHtmlBuffer,
-        }, {
             context: PUBLIC_DIR,
             from: '.',
             to: getPath('public', DIST_DIR),

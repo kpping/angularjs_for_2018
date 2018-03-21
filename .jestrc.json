@@ -1,7 +1,13 @@
 {
     "roots": ["./app"],
     "setupTestFrameworkScriptFile": "./jest.init.js",
-    "moduleFileExtensions": ["js"],
+    "moduleFileExtensions": [
+        "html", "js"
+    ],
+    "transform": {
+        "^.+\\.html$": "./build/jest_transform_html.js",
+        "^.+\\.js$": "babel-jest"
+    },
     "moduleNameMapper": {
         "\\.(scss)$": "identity-obj-proxy"
     },

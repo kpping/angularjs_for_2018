@@ -7,7 +7,6 @@ const { LicenseWebpackPlugin } = require('license-webpack-plugin');
 const {
     getPath,
     getHtmlMinifierOpt,
-    minHtmlBuffer,
     APP_DIR,
     DIST_DIR,
     PUBLIC_DIR,
@@ -66,6 +65,12 @@ module.exports = {
                 loader: 'babel-loader',
             },
         }, {
+            test: /\.html$/,
+            use: {
+                loader: 'html-loader',
+                options: getHtmlMinifierOpt(),
+            },
+        }, {
             test: /\.scss$/,
             use: [{
                 // extract style nodes from JS strings
@@ -98,7 +103,7 @@ module.exports = {
             pattern: /^(MIT|ISC|BSD.*)$/,
             suppressErrors: true,
             perChunkOutput: false,
-            outputFilename: `public/licenses0.txt`
+            outputFilename: 'public/licenses0.txt',
         }),
         // extract style nodes from JS strings
         new MiniCssExtractPlugin(),
@@ -110,14 +115,6 @@ module.exports = {
         }),
         // copy files
         new CopyWebpackPlugin([{
-            context: APP_DIR,
-            from: 'components/**/*.html',
-            transform: minHtmlBuffer,
-        }, {
-            context: APP_DIR,
-            from: 'pages/**/*.html',
-            transform: minHtmlBuffer,
-        }, {
             context: PUBLIC_DIR,
             from: '.',
             to: getPath('public', DIST_DIR),

@@ -1,7 +1,7 @@
 // HACK: workaround for running app in nodejs without
 // webpack env e.g. jest [ref: https://github.com/facebook/create-react-app/issues/1064]
 // TODO: write jest transform instead of adding this snippet
-if (!require.ensure) {
+if (ENV.name === 'test' && !require.ensure) {
     require.ensure = (deps, cb) => cb(require);
 }
 

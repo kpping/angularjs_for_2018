@@ -12,7 +12,7 @@ export class LoremDrt {
         this.controllerAs = 'ctrl';
         this.restrict = 'E';
         this.scope = {};
-        this.templateUrl = 'components/lorem/t.html';
+        this.template = require('./t.html');
     }
 
     static getInstance(...args) {

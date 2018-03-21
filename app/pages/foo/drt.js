@@ -12,7 +12,7 @@ export class FooDrt {
         this.controllerAs = 'ctrl';
         this.restrict = 'E';
         this.scope = {};
-        this.templateUrl = 'pages/foo/t.html';
+        this.template = require('./t.html');
     }
 
     static getInstance(...args) {

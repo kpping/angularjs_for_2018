@@ -12,7 +12,7 @@ export class BarDrt {
         this.controllerAs = 'ctrl';
         this.restrict = 'E';
         this.scope = {};
-        this.templateUrl = 'pages/bar/t.html';
+        this.template = require('./t.html');
     }
 
     static getInstance(...args) {

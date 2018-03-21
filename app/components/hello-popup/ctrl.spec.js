@@ -1,7 +1,7 @@
 import { HelloPopupCtrl } from './ctrl';
 
 describe('HelloPopupCtrl', () => {
-    let $controller = undefined;
+    let $controller;
 
     beforeEach(() => {
         // create fake mod
@@ -11,7 +11,7 @@ describe('HelloPopupCtrl', () => {
         angular.mock.module('fake');
 
         // get mock tools
-        inject((_$controller_) => {
+        angular.mock.inject((_$controller_) => {
             $controller = _$controller_;
         });
     });

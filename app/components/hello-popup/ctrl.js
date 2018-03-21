@@ -4,6 +4,8 @@ const DI = [
 export class HelloPopupCtrl {
     constructor(...args) {
         args.forEach((di, index) => { this[DI[index]] = di; });
+
+        this.word = 'hello';
     }
 
     closeHelloPopup() {

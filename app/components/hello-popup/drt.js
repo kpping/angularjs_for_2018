@@ -12,7 +12,7 @@ export class HelloPopupDrt {
         this.controllerAs = 'ctrl';
         this.restrict = 'E';
         this.scope = false; // use modalScope
-        this.templateUrl = 'components/hello_popup/t.html';
+        this.template = require('./t.html');
     }
 
     static getInstance(...args) {

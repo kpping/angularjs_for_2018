@@ -1,6 +1,8 @@
-// HACK: work around for jest
-if (ENV.name === 'test') {
-    require.ensure = angular.noop;
+// HACK: workaround for running app in nodejs without
+// webpack env e.g. jest
+// TODO: write jest transform instead of adding this snippet
+if (!require.ensure) {
+    require.ensure = (deps, cb) => cb(require);
 }
 
 export const routes = [{

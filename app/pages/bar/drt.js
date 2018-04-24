@@ -23,14 +23,9 @@ export class BarDrt {
         this.cssModClassSer.register(scope, style);
     }
 
-    afterCompile(scope) {
-        this.cssModClassSer.unregister(scope);
-    }
-
     compile() {
         return {
             pre: this.beforeCompile.bind(this),
-            post: this.afterCompile.bind(this),
         };
     }
 }

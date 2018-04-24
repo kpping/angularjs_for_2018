@@ -12,7 +12,7 @@ export class CssModClassDrt {
         return new CssModClassDrt(...args);
     }
 
-    beforeCompile(scope, jqEl, attr) {
+    afterCompile(scope, jqEl, attr) {
         const cssModObj = scope[CSS_MOD_OBJ];
         const attrCssModClass = attr.cssModClass || '';
         const classList = attrCssModClass.split(' ');
@@ -23,7 +23,7 @@ export class CssModClassDrt {
     }
 
     compile() {
-        return { pre: this.beforeCompile.bind(this) };
+        return { post: this.afterCompile.bind(this) };
     }
 }
 CssModClassDrt.getInstance.$inject = DI;

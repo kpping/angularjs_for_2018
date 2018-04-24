@@ -16,6 +16,7 @@ export const routes = [{
         });
         return deferred.promise;
     },
+    defaultUrl: true,
 }, {
     name: 'bar',
     url: '/bar',

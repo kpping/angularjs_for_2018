@@ -1,5 +1,22 @@
 import { routes } from './routes';
 
+function getLazyLoad(loadScript) {
+    if (!loadScript) {
+        return undefined;
+    }
+
+    return ($transition) => {
+        // get native injector bacause
+        // $transition.injector don't have loadNewModules
+        const $injector = $transition.injector().get('$injector');
+
+        // use $q to resolve after script is loaded
+        const $q = $injector.get('$q');
+
+        return loadScript($q).then(n => $injector.loadNewModules([n]));
+    };
+}
+
 const DI = [
     '$compileProvider',
     '$locationProvider',
@@ -20,20 +37,14 @@ export function config(
         const {
             name, url, template, loadScript,
         } = r;
-        const lazyLoad = ($transition) => {
-            // get native injector bacause
-            // $transition.injector don't have loadNewModules
-            const $injector = $transition.injector().get('$injector');
 
-            // use $q to resolve after script is loaded
-            const $q = $injector.get('$q');
-
-            return loadScript($q).then(n => $injector.loadNewModules([n]));
-        };
-
-        $stateProvider.state(name, { url, template, lazyLoad });
+        $stateProvider.state(name, {
+            url,
+            template,
+            lazyLoad: getLazyLoad(loadScript),
+        });
     });
 
-    $urlRouterProvider.otherwise('/foo');
+    $urlRouterProvider.otherwise(routes.filter(r => r.defaultUrl).map(r => r.url)[0]);
 }
 config.$inject = DI;

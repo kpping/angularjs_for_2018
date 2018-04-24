@@ -38,17 +38,18 @@ export class ModalSer {
         this.total = Math.max(this.total - 1, 0);
     }
 
-    createModalObj(htmlStr) {
+    createModalObj(htmlStr, modalData) {
         const modalId = this.generateModalId();
-        const modalScope = this.createModalScope(modalId);
+        const modalScope = this.createModalScope(modalId, modalData);
         const modalJqEl = this.$compile(htmlStr)(modalScope);
 
         return { modalId, modalScope, modalJqEl };
     }
 
-    createModalScope(modalId) {
+    createModalScope(modalId, modalData) {
         const modalScope = angular.extend(this.$rootScope.$new(true), {
             hideModal: this.hideModal.bind(this, modalId),
+            modalData,
         });
 
         modalScope.$on('$destroy', this.removeModalObj.bind(this, modalId));
@@ -87,10 +88,10 @@ export class ModalSer {
         cropBody();
     }
 
-    showModal(htmlStr = '') {
+    showModal(htmlStr = '', modalData) {
         this.increaseTotal();
 
-        const modalObj = this.createModalObj(htmlStr);
+        const modalObj = this.createModalObj(htmlStr, modalData);
         const { modalId, modalJqEl } = modalObj;
 
         this.modalObjStore[modalId] = modalObj;

@@ -6,6 +6,7 @@ const cfg = Object.assign({}, devCfg, {
     devServer: {
         contentBase: DIST_DIR,
         hot: true,
+        host: '0.0.0.0',
     },
 });
 cfg.plugins = cfg.plugins.concat([

@@ -8,7 +8,10 @@ exports.getPath = getPath;
 
 function getHtmlMinifierOpt() {
     return {
+        attrs: false,
+        minimize: true,
         collapseWhitespace: true,
+        conservativeCollapse: false,
         minifyCSS: true,
         minifyJS: true,
     };

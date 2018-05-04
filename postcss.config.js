@@ -6,6 +6,9 @@ module.exports = (ctx) => ({
             : {
                 discardComments: { removeAll: true },
                 reduceIdents: false,
+                discardUnused: false,
+                mergeIdents: false,
+                zindex: false,
             },
     },
 });
